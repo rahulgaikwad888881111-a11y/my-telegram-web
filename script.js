@@ -1,34 +1,45 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
+tg.headerColor = '#1a1a2e'; // Colors the top bar of the Telegram app
 
-// Set user data
+// Initialize
 const user = tg.initDataUnsafe?.user;
 if (user) {
-    document.getElementById('greeting').innerText = `Hey, ${user.first_name}!`;
-    document.getElementById('full-name').innerText = `Name: ${user.first_name} ${user.last_name || ''}`;
-    document.getElementById('user-id').innerText = `ID: ${user.id}`;
+    document.getElementById('user-name').innerText = user.first_name;
+    document.getElementById('user-id').innerText = `#${user.id}`;
 }
 
-// Navigation Logic
-function showPage(pageId) {
-    document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+// Navigation System
+function navigate(pageId, btn) {
+    tg.HapticFeedback.impactOccurred('medium');
+    
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+    // Show selected page
     document.getElementById(pageId).classList.remove('hidden');
-    tg.HapticFeedback.impactOccurred('light'); // Vibration on tap
+    
+    // Update button styles
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 }
 
-// Spin Animation
-const spinBtn = document.getElementById('spin-btn');
+// Spin Logic
+let balance = 1000;
 const wheel = document.getElementById('wheel');
+const spinBtn = document.getElementById('spin-btn');
 
 spinBtn.onclick = () => {
     tg.HapticFeedback.notificationOccurred('success');
-    wheel.style.transition = 'transform 2s ease-in-out';
-    const randomDeg = Math.floor(Math.random() * 360) + 1080;
-    wheel.style.transform = `rotate(${randomDeg}deg)`;
+    spinBtn.disabled = true;
     
-    document.getElementById('status-text').innerText = "Spinning...";
+    const rotation = Math.floor(Math.random() * 360) + 1440;
+    wheel.style.transform = `rotate(${rotation}deg)`;
     
     setTimeout(() => {
-        document.getElementById('status-text').innerText = "You won +10 Coins!";
-    }, 2000);
+        const win = Math.floor(Math.random() * 50) + 10;
+        balance += win;
+        document.getElementById('balance').innerText = balance.toLocaleString();
+        spinBtn.disabled = false;
+        tg.showAlert(`You earned ${win} credits!`);
+    }, 3000);
 };
