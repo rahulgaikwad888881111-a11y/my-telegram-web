@@ -1,22 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Mini App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello Telegram!</h1>
-    <p id="user-name"></p>
+    <div id="app">
+        <header>
+            <h1 id="greeting">Hello!</h1>
+        </header>
 
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand(); // Makes the app full screen
-        
-        // Show the user's name if available
-        if (tg.initDataUnsafe.user) {
-            document.getElementById('user-name').innerText = 
-                "Welcome, " + tg.initDataUnsafe.user.first_name;
-        }
-    </script>
+        <main>
+            <section id="profile-page" class="page">
+                <h2>Player Profile</h2>
+                <div id="user-info">
+                    <img id="user-photo" src="" alt="Profile">
+                    <p id="user-details">Loading...</p>
+                </div>
+            </section>
+
+            <section id="ranking-page" class="page" style="display:none;">
+                <h2>Global Ranking</h2>
+                <ul id="rank-list">
+                    <li>1. Alex - 500 pts</li>
+                    <li>2. Sam - 450 pts</li>
+                    <li>3. Jordan - 300 pts</li>
+                </ul>
+            </section>
+
+            <section id="spin-page" class="page" style="display:none;">
+                <h2>Lucky Spin</h2>
+                <div class="wheel-container">
+                    <canvas id="wheel" width="300" height="300"></canvas>
+                    <button id="spin-btn">SPIN!</button>
+                </div>
+                <p id="spin-result"></p>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <button onclick="showPage('profile-page')">Profile</button>
+            <button onclick="showPage('ranking-page')">Ranking</button>
+            <button onclick="showPage('spin-page')">Spin</button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
