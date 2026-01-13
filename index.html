@@ -3,74 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Orbit Wars Clone</title>
+    <title>Orbit Wars Pro</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <div class="logo-area">
-            <div class="orbit-icon"><span>●</span></div>
-            <h1>ORBIT WARS</h1>
-            <p class="subtitle">PILOT SYSTEMS ACTIVE</p>
-        </div>
-
-        <div class="card stats-card">
-            <div class="stat-group">
-                <label>LIFETIME MASS</label>
-                <div class="value">0</div>
-                <div class="power-tag green">1.00X POWER</div>
+    <div class="app-shell">
+        <header class="top-nav">
+            <div class="user-info">
+                <div class="avatar" id="user-pfp"></div>
+                <span id="user-name">Pilot</span>
             </div>
-            <div class="stat-group right">
-                <div class="power-badge">📈 1.00X POWER</div>
-                <div class="value">1</div>
-                <label>0% PROGRESS</label>
+            <div class="balance-card">
+                💎 <span id="mass-balance">0</span>
             </div>
-        </div>
+        </header>
 
-        <div class="card mine-card">
-            <div class="mine-info">
-                <div class="icon-circle">⚡</div>
-                <div>
-                    <label>STELLAR MINE</label>
-                    <div class="status"><span class="dot"></span> OFFLINE</div>
-                </div>
+        <main class="content-area">
+            <div class="wheel-box">
+                <div class="pointer">▼</div>
+                <canvas id="wheel-canvas" width="300" height="300"></canvas>
             </div>
-            <button class="btn-initiate">INITIATE</button>
-        </div>
+            
+            <button class="btn-spin" id="spin-btn">ACTIVATE ORBIT</button>
+            <p id="spin-status">Next drop in 0:00</p>
+        </main>
 
-        <button class="btn-deploy">
-            <span class="play-icon">▶</span> DEPLOY NOW
-        </button>
-
-        <div class="grid-menu">
-            <div class="grid-item" onclick="showPage('rank')">🏆<br>RANK</div>
-            <div class="grid-item" onclick="showPage('shop')">🛍️<br>SHOP</div>
-            <div class="grid-item" onclick="showPage('skins')">👻<br>SKINS</div>
-            <div class="grid-item" onclick="showPage('quest')">✅<br>QUEST</div>
-        </div>
-
-        <div class="preview-row">
-            <div class="card half-card">
-                <label>Global Ranks</label>
-                <div class="user-row">
-                    <div class="avatar-blue">👤</div>
-                    <div class="user-data">
-                        <span>@Satoshi - 50k</span>
-                        <small>ID: #00000</small>
-                    </div>
-                </div>
-            </div>
-            <div class="card half-card">
-                <label>Profile Prage</label>
-                <div class="user-row">
-                    <div class="avatar-blue">👤</div>
-                    <div class="user-data">
-                        <span id="p-name">Unknown Pilot</span>
-                        <small id="p-id">ID: #00000</small>
-                    </div>
-                </div>
-            </div>
+        <div class="bento-grid">
+            <div class="grid-item">🏆<br>RANK</div>
+            <div class="grid-item">🛍️<br>SHOP</div>
+            <div class="grid-item">👕<br>SKINS</div>
+            <div class="grid-item">✅<br>QUEST</div>
         </div>
     </div>
     <script src="script.js"></script>
