@@ -3,58 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nexus Mini App</title>
+    <title>Orbit Wars Clone</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-shell">
-        <div class="top-bar">
-            <div class="user-pill">
-                <div id="user-pfp" class="avatar"></div>
-                <span id="user-name">Player</span>
+    <div class="app-container">
+        <div class="logo-area">
+            <div class="orbit-icon"><span>●</span></div>
+            <h1>ORBIT WARS</h1>
+            <p class="subtitle">PILOT SYSTEMS ACTIVE</p>
+        </div>
+
+        <div class="card stats-card">
+            <div class="stat-group">
+                <label>LIFETIME MASS</label>
+                <div class="value">0</div>
+                <div class="power-tag green">1.00X POWER</div>
             </div>
-            <div class="balance-pill">
-                💰 <span id="balance">1,000</span>
+            <div class="stat-group right">
+                <div class="power-badge">📈 1.00X POWER</div>
+                <div class="value">1</div>
+                <label>0% PROGRESS</label>
             </div>
         </div>
 
-        <main id="content-area">
-            <section id="home-page" class="page active">
-                <div class="hero-section">
-                    <div class="wheel-outer">
-                        <div class="wheel-inner" id="wheel">💎</div>
-                        <div class="pointer"></div>
+        <div class="card mine-card">
+            <div class="mine-info">
+                <div class="icon-circle">⚡</div>
+                <div>
+                    <label>STELLAR MINE</label>
+                    <div class="status"><span class="dot"></span> OFFLINE</div>
+                </div>
+            </div>
+            <button class="btn-initiate">INITIATE</button>
+        </div>
+
+        <button class="btn-deploy">
+            <span class="play-icon">▶</span> DEPLOY NOW
+        </button>
+
+        <div class="grid-menu">
+            <div class="grid-item" onclick="showPage('rank')">🏆<br>RANK</div>
+            <div class="grid-item" onclick="showPage('shop')">🛍️<br>SHOP</div>
+            <div class="grid-item" onclick="showPage('skins')">👻<br>SKINS</div>
+            <div class="grid-item" onclick="showPage('quest')">✅<br>QUEST</div>
+        </div>
+
+        <div class="preview-row">
+            <div class="card half-card">
+                <label>Global Ranks</label>
+                <div class="user-row">
+                    <div class="avatar-blue">👤</div>
+                    <div class="user-data">
+                        <span>@Satoshi - 50k</span>
+                        <small>ID: #00000</small>
                     </div>
-                    <button class="btn-primary" id="spin-btn">TAP TO SPIN</button>
-                    <p class="hint">Daily Luck: <span class="highlight">High</span></p>
                 </div>
-            </section>
-
-            <section id="ranking-page" class="page hidden">
-                <h2 class="section-title">Global Legends</h2>
-                <div class="leaderboard">
-                    <div class="rank-card gold"><span>🥇 @Satoshi</span> <span>50.5k</span></div>
-                    <div class="rank-card silver"><span>🥈 @Vitalik</span> <span>42.1k</span></div>
-                    <div class="rank-card bronze"><span>🥉 @Pavel</span> <span>38.9k</span></div>
+            </div>
+            <div class="card half-card">
+                <label>Profile Prage</label>
+                <div class="user-row">
+                    <div class="avatar-blue">👤</div>
+                    <div class="user-data">
+                        <span id="p-name">Unknown Pilot</span>
+                        <small id="p-id">ID: #00000</small>
+                    </div>
                 </div>
-            </section>
-
-            <section id="profile-page" class="page hidden">
-                <h2 class="section-title">Identity</h2>
-                <div class="glass-card">
-                    <div class="info-row"><span>Status</span> <span class="badge">Verified</span></div>
-                    <div class="info-row"><span>UID</span> <span id="user-id">#00000</span></div>
-                    <div class="info-row"><span>Joined</span> <span>Jan 2026</span></div>
-                </div>
-            </section>
-        </main>
-
-        <nav class="glass-nav">
-            <button class="nav-btn active" onclick="navigate('home-page', this)">🏠<span>Play</span></button>
-            <button class="nav-btn" onclick="navigate('ranking-page', this)">🏆<span>Rank</span></button>
-            <button class="nav-btn" onclick="navigate('profile-page', this)">👤<span>Me</span></button>
-        </nav>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
