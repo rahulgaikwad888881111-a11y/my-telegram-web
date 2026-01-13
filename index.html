@@ -3,48 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Premium Mini App</title>
+    <title>Nexus Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <div class="header">
-            <div id="user-pfp" class="pfp-circle"></div>
-            <h2 id="greeting">Hello, Player</h2>
+    <div class="app-shell">
+        <div class="top-bar">
+            <div class="user-pill">
+                <div id="user-pfp" class="avatar"></div>
+                <span id="user-name">Player</span>
+            </div>
+            <div class="balance-pill">
+                💰 <span id="balance">1,000</span>
+            </div>
         </div>
 
-        <div class="content">
-            <section id="home-page" class="active">
-                <div class="spin-container">
-                    <div class="wheel-box">
-                        <div id="wheel" class="wheel">🎰</div>
+        <main id="content-area">
+            <section id="home-page" class="page active">
+                <div class="hero-section">
+                    <div class="wheel-outer">
+                        <div class="wheel-inner" id="wheel">💎</div>
+                        <div class="pointer"></div>
                     </div>
-                    <button id="spin-btn" class="main-button">SPIN NOW</button>
-                    <p id="status-text">Try your luck!</p>
+                    <button class="btn-primary" id="spin-btn">TAP TO SPIN</button>
+                    <p class="hint">Daily Luck: <span class="highlight">High</span></p>
                 </div>
             </section>
 
-            <section id="ranking-page" class="hidden">
-                <h3>Global Leaderboard</h3>
-                <div class="list-item"><span>1. CryptoKing</span><span>999 pts</span></div>
-                <div class="list-item"><span>2. TeleMaster</span><span>850 pts</span></div>
-                <div class="list-item"><span>3. LuckyDev</span><span>720 pts</span></div>
-            </section>
-
-            <section id="profile-page" class="hidden">
-                <h3>Your Account</h3>
-                <div class="profile-card">
-                    <p id="full-name">Name: Loading...</p>
-                    <p id="user-id">ID: 000000</p>
+            <section id="ranking-page" class="page hidden">
+                <h2 class="section-title">Global Legends</h2>
+                <div class="leaderboard">
+                    <div class="rank-card gold"><span>🥇 @Satoshi</span> <span>50.5k</span></div>
+                    <div class="rank-card silver"><span>🥈 @Vitalik</span> <span>42.1k</span></div>
+                    <div class="rank-card bronze"><span>🥉 @Pavel</span> <span>38.9k</span></div>
                 </div>
             </section>
-        </div>
 
-        <nav class="nav-bar">
-            <div class="nav-item" onclick="showPage('home-page')">🏠<br>Home</div>
-            <div class="nav-item" onclick="showPage('ranking-page')">🏆<br>Rank</div>
-            <div class="nav-item" onclick="showPage('profile-page')">👤<br>Profile</div>
+            <section id="profile-page" class="page hidden">
+                <h2 class="section-title">Identity</h2>
+                <div class="glass-card">
+                    <div class="info-row"><span>Status</span> <span class="badge">Verified</span></div>
+                    <div class="info-row"><span>UID</span> <span id="user-id">#00000</span></div>
+                    <div class="info-row"><span>Joined</span> <span>Jan 2026</span></div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="glass-nav">
+            <button class="nav-btn active" onclick="navigate('home-page', this)">🏠<span>Play</span></button>
+            <button class="nav-btn" onclick="navigate('ranking-page', this)">🏆<span>Rank</span></button>
+            <button class="nav-btn" onclick="navigate('profile-page', this)">👤<span>Me</span></button>
         </nav>
     </div>
     <script src="script.js"></script>
