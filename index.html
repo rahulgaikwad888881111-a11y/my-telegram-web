@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <h1>Hello Telegram!</h1>
+    <p id="user-name"></p>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Makes the app full screen
+        
+        // Show the user's name if available
+        if (tg.initDataUnsafe.user) {
+            document.getElementById('user-name').innerText = 
+                "Welcome, " + tg.initDataUnsafe.user.first_name;
+        }
+    </script>
+</body>
+</html>
