@@ -2,52 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Mini App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Premium Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <header>
-            <h1 id="greeting">Hello!</h1>
-        </header>
+    <div class="app-container">
+        <div class="header">
+            <div id="user-pfp" class="pfp-circle"></div>
+            <h2 id="greeting">Hello, Player</h2>
+        </div>
 
-        <main>
-            <section id="profile-page" class="page">
-                <h2>Player Profile</h2>
-                <div id="user-info">
-                    <img id="user-photo" src="" alt="Profile">
-                    <p id="user-details">Loading...</p>
+        <div class="content">
+            <section id="home-page" class="active">
+                <div class="spin-container">
+                    <div class="wheel-box">
+                        <div id="wheel" class="wheel">🎰</div>
+                    </div>
+                    <button id="spin-btn" class="main-button">SPIN NOW</button>
+                    <p id="status-text">Try your luck!</p>
                 </div>
             </section>
 
-            <section id="ranking-page" class="page" style="display:none;">
-                <h2>Global Ranking</h2>
-                <ul id="rank-list">
-                    <li>1. Alex - 500 pts</li>
-                    <li>2. Sam - 450 pts</li>
-                    <li>3. Jordan - 300 pts</li>
-                </ul>
+            <section id="ranking-page" class="hidden">
+                <h3>Global Leaderboard</h3>
+                <div class="list-item"><span>1. CryptoKing</span><span>999 pts</span></div>
+                <div class="list-item"><span>2. TeleMaster</span><span>850 pts</span></div>
+                <div class="list-item"><span>3. LuckyDev</span><span>720 pts</span></div>
             </section>
 
-            <section id="spin-page" class="page" style="display:none;">
-                <h2>Lucky Spin</h2>
-                <div class="wheel-container">
-                    <canvas id="wheel" width="300" height="300"></canvas>
-                    <button id="spin-btn">SPIN!</button>
+            <section id="profile-page" class="hidden">
+                <h3>Your Account</h3>
+                <div class="profile-card">
+                    <p id="full-name">Name: Loading...</p>
+                    <p id="user-id">ID: 000000</p>
                 </div>
-                <p id="spin-result"></p>
             </section>
-        </main>
+        </div>
 
-        <nav class="bottom-nav">
-            <button onclick="showPage('profile-page')">Profile</button>
-            <button onclick="showPage('ranking-page')">Ranking</button>
-            <button onclick="showPage('spin-page')">Spin</button>
+        <nav class="nav-bar">
+            <div class="nav-item" onclick="showPage('home-page')">🏠<br>Home</div>
+            <div class="nav-item" onclick="showPage('ranking-page')">🏆<br>Rank</div>
+            <div class="nav-item" onclick="showPage('profile-page')">👤<br>Profile</div>
         </nav>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
